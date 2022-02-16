@@ -3,31 +3,83 @@
   <form [formGroup]="UserDatailsForm" (ngSubmit)="onSubmit()">
     <div>
       First Name:
-      <input type="text" formControlName="firstName" name="firstName" />
+      <input
+        type="text"
+        class="col-md-6 form-control"
+        formControlName="firstName"
+        name="firstName"
+      />
     </div>
     <br />
     <div>
       Last Name:
-      <input type="text" formControlName="lastName" name="lastName" />
+      <input
+        type="text"
+        class="col-md-6 form-control"
+        formControlName="lastName"
+        name="lastName"
+      />
     </div>
     <br />
-    <div>Age : <input type="text" formControlName="age" name="age" /></div>
-    <br />
-    <div>Email: <input type="text" formControlName="email" name="email" /></div>
-    <br />
     <div>
-      <button type="button">add fields</button>
+      Age :
+      <input
+        type="text"
+        class="col-md-6 form-control"
+        formControlName="age"
+        name="age"
+      />
     </div>
-    <span> Address:<input /> </span>
+    <br />
+    <div>
+      Email:
+      <input
+        type="text"
+        class="col-md-6 form-control"
+        formControlName="email"
+        name="email"
+      />
+    </div>
+    <br />
+    <div>
+      <button type="button" (click)="addFields()" class="btn btn-default">
+        add fields
+      </button>
+    </div>
+    <div formArrayName="addressData">
+      <div
+        *ngFor="
+          let phase of this.UserDatailsForm.controls['addressData'].controls;
+          let i = index
+        "
+        [formGroupName]="i"
+      >
+        <span class="col-md-12" [formGroupName]="i">
+          Address:<input
+            type="text"
+            class="col-md-6 form-control"
+            name="address"
+            formControlName="address"
+          />
+          Phone number:<input
+            type="text"
+            class="col-md-6 form-control"
+            name="phoneNumber"
+            formControlName="phoneNumber"
+          />
+          <button class="btn btn-default" (click)="removeRow(i)">Remove</button>
+        </span>
+      </div>
+    </div>
     <br />
     <br />
     <div>
-      <button type="submit">Submit</button>
+      <button type="submit" class="btn btn-default">Submit</button>
     </div>
   </form>
 
   <div>
-    <table style="border:1px solid">
+    <table class="table table-responsive" style="border:1px solid">
       <thead>
         <tr>
           <th>ID</th>
@@ -46,8 +98,8 @@
           <td>{{ val.age }}</td>
           <td>{{ val.email }}</td>
           <td>
-            <button>Edit</button>
-            <button>Delete</button>
+            <button class="btn btn-default">Edit</button>
+            <button class="btn btn-default">Delete</button>
           </td>
         </tr>
       </tbody>

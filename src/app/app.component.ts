@@ -23,6 +23,14 @@ export class AppComponent implements OnInit {
     });
   }
 
+  addFields() {
+    const control = <FormArray>this.UserDatailsForm.controls['addressData'];
+    control.push(this.createAddressData());
+  }
+  removeRow(i: number) {
+    const control = <FormArray>this.UserDatailsForm.controls['addressData'];
+    control.removeAt(i);
+  }
   onSubmit() {
     console.log(this.UserDatailsForm.value);
     this.UserDatailsForm.value.id = this.userDetailsData.length + 1;
