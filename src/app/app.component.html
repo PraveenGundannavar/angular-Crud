@@ -1,0 +1,56 @@
+<hello name="{{ name }}"></hello>
+<div>
+  <form [formGroup]="UserDatailsForm" (ngSubmit)="onSubmit()">
+    <div>
+      First Name:
+      <input type="text" formControlName="firstName" name="firstName" />
+    </div>
+    <br />
+    <div>
+      Last Name:
+      <input type="text" formControlName="lastName" name="lastName" />
+    </div>
+    <br />
+    <div>Age : <input type="text" formControlName="age" name="age" /></div>
+    <br />
+    <div>Email: <input type="text" formControlName="email" name="email" /></div>
+    <br />
+    <div>
+      <button type="button">add fields</button>
+    </div>
+    <span> Address:<input /> </span>
+    <br />
+    <br />
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+
+  <div>
+    <table style="border:1px solid">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>firstName</th>
+          <th>lastName</th>
+          <th>age</th>
+          <th>email</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let val of userDetailsData; let i = index">
+          <td>{{ val.id }}</td>
+          <td>{{ val.firstName }}</td>
+          <td>{{ val.lastName }}</td>
+          <td>{{ val.age }}</td>
+          <td>{{ val.email }}</td>
+          <td>
+            <button>Edit</button>
+            <button>Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
